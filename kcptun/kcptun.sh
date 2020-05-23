@@ -31,8 +31,8 @@ KCPTUN_TAGS_URL='https://github.com/xtaci/kcptun/tags'
 BASE_URL='https://github.com/kuoruan/shell-scripts/raw/master/kcptun'
 SHELL_VERSION_INFO_URL="${BASE_URL}/version.json"
 
-JQ_LINUX32_URL="${BASE_URL}/bin/jq-linux32"
-JQ_LINUX64_URL="${BASE_URL}/bin/jq-linux64"
+JQ_LINUX32_URL="https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux32"
+JQ_LINUX64_URL="https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64"
 JQ_LINUX32_HASH='5ac55877f41916b80fe546e16d58678cca9aae6d'
 JQ_LINUX64_HASH='d8e36831c3c94bb58be34dd544f44a6c6cb88568'
 JQ_BIN="${KCPTUN_INSTALL_DIR}/bin/jq"
