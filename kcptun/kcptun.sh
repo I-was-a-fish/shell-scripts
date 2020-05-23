@@ -740,45 +740,10 @@ install_deps() {
 }
 
 install_supervisor() {
-	if [ -s /etc/supervisord.conf ] && command_exists supervisord; then
-		cat >&2 <<-EOF
-		检测到你曾经通过其他方式安装过 Supervisor , 这会和本脚本安装的 Supervisor 产生冲突
-		推荐你备份当前 Supervisor 配置后卸载原有版本
-		已安装的 Supervisor 配置文件路径为: /etc/supervisord.conf
-		通过本脚本安装的 Supervisor 配置文件路径为: /etc/supervisor/supervisord.conf
-		你可以使用以下命令来备份原有配置文件:
-
-		    mv /etc/supervisord.conf /etc/supervisord.conf.bak
-		EOF
-
-		exit 1
-	fi
-
-	if ! command_exists easy_install; then
-		cat >&2 <<-EOF
-		未找到已安装的 easy_install 命令，
-		请先手动安装 python-setuptools
-		然后重新运行安装脚本。
-		EOF
-		exit 1
-	fi
-
-	if ! ( easy_install --help >/dev/null 2>&1 ); then
-		cat >&2 <<-EOF
-		检测到你的 easy_install 已损坏，
-		通常是由于你自己升级过 python 版本，
-		但是没有将 easy_install 链接到新的地址。
-		需要手动做一个软链接
-		 * ln -s /usr/local/python2.7/bin/easy_install /usr/bin/easy_install
-
-		 “/usr/local/python2.7” 应该为你新版本 python 的路径
-		EOF
-		exit 1
-	fi
 
 	(
 		set -x
-		easy_install -U supervisor
+		pip install supervisor
 	)
 
 	if [ "$?" != "0" ]; then
